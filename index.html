@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html　lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>あなたに合うサウナ紹介 </title>
+
+<style>
+/*h1からｈ４のcss*/
+h1 {
+  border-bottom: solid 3px #cce4ff;
+  position: relative;
+ text-align: center;
+ font-family: "Arial";
+ color: #0099FF
+}
+
+h1:after {
+  position: absolute;
+  content: " ";
+  display: block;
+  border-bottom: solid 3px #5472cd;
+  bottom: -3px;
+  width: 20%;
+}
+
+h2 {
+  padding: 0.25em 0.5em;
+  color: #494949;
+  background: transparent;
+  border-left: solid 5px #7db4e6;
+}
+h3{color: #364e96;
+  border: solid 3px #364e96;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+h4{
+ background: linear-gradient(transparent 60%, #c8f1ff 60%);
+ font-size: 1.5em;
+}
+
+/* カテゴリのボタンのcss*/
+a.btn_03 {
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+        margin: auto;
+	width: 80px;
+	padding: 1rem 1.5rem;
+	font-weight: bold;
+	border: 2px solid #27acd9;
+	color: #27acd9;
+	border-radius: 100vh;
+	transition: 0.5s;
+}
+a.btn_03:hover {
+	color: #fff;
+	background: #27acd9;
+}
+/* 挿入した画像のcss*/
+.image{
+ width: 100%;
+ text-align: center;
+ display: block;
+ margin: auto;
+ }
+/* 挿入した背景のcss*/
+.bg{
+ width: 100%;
+ height:650px;
+ background-image: url(img/sauna.jpg);
+ background-size: cover;
+ background-blend-mode: lighten;
+ background-repeat: no-repeat;
+ font-size: 32px;
+ color: white;
+ text-align: center;
+ line-height: 600px;
+}
+/* 施設詳細の表（テーブル）のcss*/
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tr{
+  border-bottom: solid 2px white;
+}
+
+table tr:last-child{
+  border-bottom: none;
+}
+
+table th{
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #52c2d0;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+table th:after{
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top:calc(50% - 10px);
+  right:-10px;
+  border-left: 10px solid #52c2d0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+table td{
+  text-align: left;
+  width: 70%;
+  text-align: center;
+  background-color: #eee;
+  padding: 10px 0;
+}
+
+/* 公式サイトのボタンのcss*/
+.button_solid018 a {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 240px;
+    padding: 10px 25px;
+    color: #313131;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: #eee;
+    filter: drop-shadow(0px 2px 4px #ccc);
+    border-radius: 3px;
+}
+.button_solid018 a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px rgb(0 0 0 / 15%), 0 0 5px rgb(0 0 0 / 10%);
+}
+.button_solid018 a:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #313131;
+    border-right: 3px solid #313131;
+    transform: rotate(45deg) translateY(-48%);
+    position: absolute;
+    top: 48%;
+    right: 20px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+}
+/* サウナ室、水風呂温度表示の部分のcss*/
+.wrap {
+	display: flex;
+}
+
+.wrap .box-a {
+	flex-grow: 1; 
+	position: relative;
+	height: 140px;
+	line-height: 140px;
+	margin-right: 2em;
+	background-color: white;
+        text-align: center;
+}
+
+.wrap .box-a::after {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	margin: 0 1rem;
+	content: "";
+	width: 1px; 
+	height: 100%;
+	background-color: #333; 
+}
+.wrap .box-b {
+	flex-grow: 1; 
+	position: relative;
+	height: 140px;
+	line-height: 140px;
+	margin-right: 2em;
+	background-color: white;
+        text-align: center;
+}
+/* サウナ室部分のidのcss*/
+#posision1{
+  line-height: 30px;
+  color: #ff3300;
+}
+/* 水風呂部分のidのcss*/
+#posision2{
+ line-height: 30px;
+ color: #0000ff;
+}
+/* カテゴリ部分のcss*/
+#example{
+ width: 100%;
+ height:250px;
+ background-size: cover;
+ background-blend-mode: lighten;
+ background-repeat: no-repeat;
+ background-color: #EEEEEE;
+}
+
+</style>
+</head>
+
+<body>
+<div class="bg">
+
+</div>
+<br>
+<h1> あなたにおすすめのサウナ　見つけます  </h1>
+<br>
+<div id="example">
+<h2> カテゴリ </h2>
+<table>
+<tr>
+<a href="#one" class="btn_03">初心者</a>&nbsp;
+<a href="#two" class="btn_03">サウナ好き</a>&nbsp;
+<a href="#three" class="btn_03">つめた〜い水風呂　</a>&nbsp;
+<a href="#four" class="btn_03">あつ〜いサウナ　</a>&nbsp;
+<br>
+<a href="#five" class="btn_03">広島おすすめサウナ　</a>&nbsp;
+<a href="#six" class="btn_03">映えるサウナ　</a>&nbsp;
+<a href="#seven" class="btn_03">サウナシュラン入賞サウナ　</a>&nbsp;
+</tr>
+</table>
+</div>
+
+
+<br>
+<h2 id="one"> 初心者向けのおすすめサウナ　</h2>
+<br>
+<h3 class="first">火の山温泉　どんどこ湯（熊本）</h3>
+<br>
+<div class="image">
+<img src="img/dondoko.jpg"> </img>
+</div>
+<br>
+<h4>概要
+</h4>
+<br>
+
+<div class="wrap">
+ <div class="box-a">
+<p id="posision1"> サウナ室
+<br> <img src="img/totonoi.jpg" width=60px height=60px></img>
+<br>温度：　90度
+
+</p>
+<br>
+</div>
+ <div class="box-b">
+<p id="posision2"> 水風呂
+<br>  <img src="img/mizuburo.jpg" witdh 60px height=60px></img>
+<br>温度： ２０度
+
+</p>
+<br>
+</div>
+</div>
+<br>
+
+<div class="button_solid018">
+<br>
+  <a href="https://www.dondoko.arden-aso.jp/">公式サイトはこちらから</a>
+</div>
+
+<table align=center width=100%>
+  <tr>
+    <th>施設名</th>
+    <td>　火の山温泉　どんどこ湯　</td>
+  </tr>
+  <tr>
+    <th>営業時間</th>
+    <td>11時〜22時</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>熊本県 阿蘇郡南阿蘇村 下野135-1</td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td>大人：630円
+    <br>　　子人：320円
+　　</td>
+  </tr>
+　<tr>
+    <th>電話番号</th>
+    <td>0967-35-1726</td>
+  </tr>
+</table>
+
+
+<br>
+<h2 id="two"> サウナ好き向けのおすすめサウナ　</h2>
+<br>
+<h3 class="first">ウェルビー福岡（福岡）</h3>
+<br>
+<div class="image">
+<img src="img/uerubi.jpg"> </img>
+</div>
+<br>
+<h4>概要
+</h4>
+<br>
+
+<div class="wrap">
+ <div class="box-a">
+<p id="posision1"> サウナ室
+<br> <img src="img/totonoi.jpg" width=60px height=60px></img>
+<br>温度：　80度
+
+</p>
+<br>
+</div>
+ <div class="box-b">
+<p id="posision2"> 水風呂
+<br>  <img src="img/mizuburo.jpg" witdh 60px height=60px></img>
+<br>温度： 16度
+
+</p>
+<br>
+</div>
+</div>
+<br>
+
+<div class="button_solid018">
+<br>
+  <a href="https://www.wellbe.co.jp/fukuoka/">公式サイトはこちらから</a>
+</div>
+
+<table align=center width=100%>
+  <tr>
+    <th>施設名</th>
+    <td>　ウェルビー福岡　</td>
+  </tr>
+  <tr>
+    <th>営業時間</th>
+    <td>6時〜23時</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>福岡市博多区祇園町8-12 ロータリー大和ビル２F</td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td>　平日...９０分： １５００円,３時間: ２０００円, FREE: ３０００円
+    <br>　休日...９０分： １８００円,３時間： ２３００円, FREE： ３３００円
+　　</td>
+  </tr>
+　<tr>
+    <th>電話番号</th>
+    <td>092-291-1009</td>
+  </tr>
+</table>
+
+<br>
+<h2 id="three"> つめた〜い水風呂のあるサウナ　</h2>
+<br>
+<h3 class="first">かるまる（東京）</h3>
+<br>
+<div class="image">
+<img src="img/karumaru.jpg"> </img>
+</div>
+<br>
+<h4>概要
+</h4>
+<br>
+
+<div class="wrap">
+ <div class="box-a">
+<p id="posision1"> サウナ室
+<br> <img src="img/totonoi.jpg" width=60px height=60px></img>
+<br>温度：　92度
+
+</p>
+<br>
+</div>
+ <div class="box-b">
+<p id="posision2"> 水風呂
+<br>  <img src="img/mizuburo.jpg" witdh 60px height=60px></img>
+<br>温度： 5.3度
+
+</p>
+<br>
+</div>
+</div>
+<br>
+
+<div class="button_solid018">
+<br>
+  <a href="https://karumaru.jp/ikebukuro/">公式サイトはこちらから</a>
+</div>
+
+<table align=center width=100%>
+  <tr>
+    <th>施設名</th>
+    <td>　サウナ&ホテル宿泊[かるまる池袋]　</td>
+  </tr>
+  <tr>
+    <th>営業時間</th>
+    <td>１１時〜翌１０時</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>〒171-0014東京都豊島区池袋2丁目7−7　6階</td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td>　通常料金： ３４８０円　６０分： １９８０円　１２０分： ２８８０円
+　　</td>
+  </tr>
+　<tr>
+    <th>電話番号</th>
+    <td>03-3986-3726</td>
+  </tr>
+</table>
+
+
+<br>
+<h2 id="four"> あつ〜いサウナ室のあるサウナ　</h2>
+<br>
+<h3 class="first">サウナしきじ(静岡)</h3>
+<br>
+<div class="image">
+<img src="img/sikizi.jpg"> </img>
+</div>
+<br>
+<h4>概要
+</h4>
+<br>
+
+<div class="wrap">
+ <div class="box-a">
+<p id="posision1"> サウナ室
+<br> <img src="img/totonoi.jpg" width=60px height=60px></img>
+<br>温度：　１１４度
+
+</p>
+<br>
+</div>
+ <div class="box-b">
+<p id="posision2"> 水風呂
+<br>  <img src="img/mizuburo.jpg" witdh 60px height=60px></img>
+<br>温度： １６度
+
+</p>
+<br>
+</div>
+</div>
+<br>
+
+<div class="button_solid018">
+<br>
+  <a href="https://www.saunashikiji.jp/">公式サイトはこちらから</a>
+</div>
+
+<table align=center width=100%>
+  <tr>
+    <th>施設名</th>
+    <td>　サウナしきじ　</td>
+  </tr>
+  <tr>
+    <th>営業時間</th>
+    <td>２４時間</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>静岡県静岡市駿河区敷地2-25-1</td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td>　男性... 平日：１４００円　休日： １６００円
+　　<br>  女性... １日：９００円
+　　</td>
+  </tr>
+　<tr>
+    <th>電話番号</th>
+    <td>054-237-5537</td>
+  </tr>
+</table>
+
+
+<br>
+<h2 id="five"> 広島にあるおすすめサウナ　</h2>
+<br>
+<h3 class="first">広島カプセルホテル＆サウナ岩盤浴　ニュージャパンEX（広島）</h3>
+<br>
+<div class="image">
+<img src="img/ex.jpg"> </img>
+</div>
+<br>
+<h4>概要
+</h4>
+<br>
+
+<div class="wrap">
+ <div class="box-a">
+<p id="posision1"> サウナ室
+<br> <img src="img/totonoi.jpg" width=60px height=60px></img>
+<br>温度：　90度
+
+</p>
+<br>
+</div>
+ <div class="box-b">
+<p id="posision2"> 水風呂
+<br>  <img src="img/mizuburo.jpg" witdh 60px height=60px></img>
+<br>温度： １６度
+
+</p>
+<br>
+</div>
+</div>
+<br>
+
+<div class="button_solid018">
+<br>
+  <a href="http://www.sauna-nj.co.jp/">公式サイトはこちらから</a>
+</div>
+
+<table align=center width=100%>
+  <tr>
+    <th>施設名</th>
+    <td>広島カプセル＆サウナ岩盤浴　ニュージャパンEX　</td>
+  </tr>
+  <tr>
+    <th>営業時間</th>
+    <td>２４時間</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>広島県 広島市 中区薬研堀8-8</td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td> 60分：１２９０円　９０分： １４９０円　３時間： 1980円
+　　</td>
+  </tr>
+　<tr>
+    <th>電話番号</th>
+    <td>082-243-0227</td>
+  </tr>
+</table>
+
+<br>
+<h2 id="six"> 映えるおすすめサウナ　</h2>
+<br>
+<h3 class="first">KAMOME　SLOW　HOTEL(兵庫)</h3>
+<br>
+<div class="image">
+<img src="img/kamome.jpg"> </img>
+</div>
+<br>
+<h4>概要
+</h4>
+<br>
+
+<div class="wrap">
+ <div class="box-a">
+<p id="posision1"> サウナ室
+<br> <img src="img/totonoi.jpg" width=60px height=60px></img>
+<br>温度：　95度
+
+</p>
+<br>
+</div>
+ <div class="box-b">
+<p id="posision2"> 水風呂
+<br>  <img src="img/mizuburo.jpg" witdh 60px height=60px></img>
+<br>温度： １７度
+
+</p>
+<br>
+</div>
+</div>
+<br>
+
+<div class="button_solid018">
+<br>
+  <a href="https://kamome-slow-hotel.jp/">公式サイトはこちらから</a>
+</div>
+
+<table align=center width=100%>
+  <tr>
+    <th>施設名</th>
+    <td>KAMOME SLOW HOTEL　</td>
+  </tr>
+  <tr>
+    <th>営業時間</th>
+    <td>大浴場： １５時〜２２時　/ ７時〜１１時</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>兵庫県 淡路市 郡家字大谷北1111</td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td> 一人１０００円（宿泊者なら５００円）
+　　</td>
+  </tr>
+　<tr>
+    <th>電話番号</th>
+    <td>0799-85-1900</td>
+  </tr>
+</table>
+
+<br>
+<h2 id="seven">２０２２年サウナシュラン1位サウナ 　</h2>
+<br>
+<h3 class="first">スパメッツァおおたか　竜泉寺の湯（千葉）</h3>
+<br>
+<div class="image">
+<img src="img/ootaka.jpg"> </img>
+</div>
+<br>
+<h4>概要
+</h4>
+<br>
+
+<div class="wrap">
+ <div class="box-a">
+<p id="posision1"> サウナ室
+<br> <img src="img/totonoi.jpg" width=60px height=60px></img>
+<br>温度：　９６度
+
+</p>
+<br>
+</div>
+ <div class="box-b">
+<p id="posision2"> 水風呂
+<br>  <img src="img/mizuburo.jpg" witdh 60px height=60px></img>
+<br>温度： １６度
+
+</p>
+<br>
+</div>
+</div>
+<br>
+
+<div class="button_solid018">
+<br>
+  <a href="https://www.ryusenjinoyu.com/spametsaotaka/">公式サイトはこちらから</a>
+</div>
+
+<table align=center width=100%>
+  <tr>
+    <th>施設名</th>
+    <td>スパメッツァおおたか　竜泉寺の湯　</td>
+  </tr>
+  <tr>
+    <th>営業時間</th>
+    <td>６時〜深夜２時</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>千葉県流山市おおたかの森西一丁目15番1</td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td> 平日...大人：１１００円（９時までにご入館で９５０円）　小人：３００円
+　　<br> 休日...大人： １２８０円（３時間,９時までにご入館で１０８０円）　１４８０円（フリー）
+</td>
+  </tr>
+　<tr>
+    <th>電話番号</th>
+    <td>04-7178-3726</td>
+  </tr>
+</table>
+<br>
+<br>
+<br>
+<script>
+
+
+
+
+</script>
+
+</body>
+
+</html>
